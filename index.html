@@ -1,0 +1,200 @@
+<!doctyp html>
+<head>
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Product preview card component</title>
+	<style>
+	 
+	/* COSTUM-FONTS: ttf-files über google-fonts, danach .wof und .wof2-files über https://www.fontsquirrel.com/tools/webfont-generator. 
+		Anleitungen unter www.https://www.pagecloud.com/blog/how-to-add-custom-fonts-to-any-website.
+		ACHTUNG: Die Syntax von @font-face verlangt / statt \. */
+	@font-face { 
+    font-family: 'frauncesblack';
+    	src: url('webfontkit-Frauncess/fraunces-variablefont_softwonkopszwght-webfont.woff2') format('woff2'),
+         url('webfontkit-Frauncess/fraunces-variablefont_softwonkopszwght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}			
+	@font-face {
+    font-family: 'montserratthin';
+    	src: url('webfontkit-Montserrat/montserrat-variablefont_wght-webfont.woff2') format('woff2'),
+         url('webfontkit-Montserrat/montserrat-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+		* {		/* Hintergrundfarbe des Viewport */
+			background: #F2EAE2; /* Cream (BG) */
+		}
+		.information, .information *{ /* Hintergrundfarbe des Info-Raums*/
+			background-color: white;
+		}
+		.wrapper {
+			display:flex;
+			justify-content:center;
+			height: 450px;
+		}
+		.picture{
+			background-image: url(product-preview-card-component-main/images/image-product-desktop.jpg);
+			background-size:cover;
+			border-radius: 10px 0px 0px 10px ;  /*tl, tr, br, bl*/
+			height: 450px;
+			width: 300px;	
+		}
+		
+		.information{
+			position:relative; /* Zur Positionierung des Buttons und der Preise */
+			height: 450px;
+			width: 300px;
+			border-radius: 0px 10px 10px 0px ;  /*tl, tr, br, bl*/
+		}
+		
+		.information > *{ /* white space left and right of text*/
+			margin-left:32px;
+			margin-right:32px;
+			/* Aurometal Saurus */
+			color: #6C7289;
+		}
+			
+		#category{	/* overline */
+			font-size:12px;
+			font-weight: 1000;
+			font-style: normal;
+			line-height: 15px;
+			text-transform: uppercase;
+			letter-spacing: 5px;
+			margin-top:33px;
+		}	
+		
+		.information > h1{ /* headline */
+			font-family:'frauncesblack';
+			font-style: normal;
+			font-weight: lighter; /* font-weight is ignored due to imported costum-fonts */
+			font-size: 32px;
+			line-height: 32px;
+			color:black;
+			margin-top:15px;
+/*			margin:0px;*/
+		}
+		
+		.information > p{ /* product information text*/
+			font-family: 'montserratthin';
+			font-style:bold;
+			font-weight: 1000;
+			font-size: 12px;
+			letter-spacing: 1.2px;
+			line-height: 23px;
+		}
+		
+		div.prices{
+			position:absolute;
+			bottom:114px; /* 32px + 48px + 34px */
+			display:flex;
+			align-items:center;
+			height: 32px;
+			/* Deep Aquamarine */
+			color: #3D8168;
+		}
+		.prices > .price{ /* $149.99 */
+			font-family: 'frauncesblack';
+			font-size: 32px;
+			font-weight: 100;
+		}		
+		.prices > .oldPrice{ /* 199.99 */
+			font-family:'montserratthin';
+			margin:25px;
+			text-decoration-line:line-through;
+			font-weight: 100;	
+		}
+		
+		button.addToCart{
+			background-color: #3D8168;/* Deep Aquamarine */
+			font-weight:bold;
+			color:white;
+			border-radius: 5px;
+			border:none;
+			height: 48px; /* source: Figma*/
+/*			width:276px;	 (300px - 2*32px) --> irrelevant with position left/right*/
+			position:absolute;
+			bottom:32px;  /* 32px distance to bottom */
+			left:32px;		/* 32px distance to the left */
+			right:32px;		/* 32px distance to the right */
+			margin:0px;		/* margins need be 0px for prices positioning */
+		}
+		button.addToCart > img {
+			background-color: #3D8168;
+			margin-right:10px; /* distance image to text */
+		}
+		
+		button.addToCart:hover, button.addToCart:hover > img  {
+			background-color: #26483b;
+		}
+	/* Media query for mobile adaption */
+		@media (max-width: 615px) { 	
+			.wrapper { /* for synchronous change of layout and picture */
+				flex-wrap:wrap;
+			}
+			
+			.picture { /* change of picture, radius, size */
+			
+				background-image: url(product-preview-card-component-main/images/image-product-mobile.jpg);
+				background-size:auto 240px;
+				border-radius: 10px 10px 0px 0px ; /* tl, tr, br, bl */
+	/*			height: auto;*/
+				height:240px;
+				width: 341px;
+			
+			}
+				
+			.information { /* change of radius, size */
+				border-radius: 0px 0px 10px 10px;
+				height:371px;
+				width:341px;
+			}
+			
+			.information > *{ /* radius, size */
+			margin-left:25px;
+			margin-right:25px;
+			}
+			
+			#category { /* reduced distance to the top */
+				margin-top:26px;
+			}
+			
+			.information > h1 { /* reduced distance overline to headline */
+				margin-top: 8px;
+			}
+			
+			div.prices{
+			position:absolute;
+			bottom:96px; /* 24px + 48px + 24px */
+			}
+			
+			button.addToCart { /* reduced distances */
+			bottom:25px;  /* 25px distance to bottom*/
+			left:25px;		/* 25px distance to the left */
+			right:25px;		/* 25px distance to the right */
+			margin:0px;		/*margins need be 0px for prices positioning */
+			}
+		}		
+	</style>
+	
+	<head>
+	<div class="wrapper">
+		<div class="picture"></div>
+		<div class="information">
+			<p id="category">Perfume</p>
+			<h1 class="productname">Gabrielle Essence Eau De Parfum</h1>
+			<p class="description">A floral, solar and voluptuous interpretation composed by Olivier Polge, <nobr>Perfume-Creator</nobr> for the House of CHANEL.</p>
+			<div class="prices">
+				<p class="price">$149.99</p>
+				<p class="oldPrice">$169.99</p>
+			</div>
+			<button class="addToCart" type="button"><img src="product-preview-card-component-main/images/icon-cart.svg">Add to Cart</button>
+		</div>
+	</div>	
+	</head>
